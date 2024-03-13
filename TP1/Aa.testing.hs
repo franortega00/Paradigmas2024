@@ -1,5 +1,6 @@
 import Container
-{-import Route
+import Route
+{-
 import Stack
 import Vessel-}
 
@@ -15,6 +16,14 @@ cont = newC "MDQ" 5
 destino = destinationC cont
 peso = netC cont
 testContainer = [destino == "MDQ", peso == 5]
+
+{- data Route = Rou [ String ] deriving (Eq, Show)
+
+newR :: [ String ] -> Route                    -- construye una ruta segun una lista de ciudades
+newR listaDestinos = Rou listaDestinos -}
+
+ruta = newR ["MDQ", "Bahamas", "Kuwait"]
+
 {-barco = cargarV barco cont
 otroBarco = cargarV barco cont
 dobleBarco = cargarV otroBarco cont
