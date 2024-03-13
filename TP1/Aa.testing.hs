@@ -1,8 +1,7 @@
 import Container
 import Route
-{-
 import Stack
-import Vessel-}
+import Vessel
 
 {-
 FUNCIONES A HACER:
@@ -23,6 +22,18 @@ newR :: [ String ] -> Route                    -- construye una ruta segun una l
 newR listaDestinos = Rou listaDestinos -}
 
 ruta = newR ["MDQ", "Bahamas", "Kuwait"]
+
+{- newS :: Int -> Stack                          -- construye una Pila con la capacidad indicada 
+newS capacidad = Sta [] capacidad
+
+freeCellsS :: Stack -> Int                    -- responde la celdas disponibles en la pila
+freeCellsS contStack capacidadStack = capacidadStack - Length contStack
+stackS :: Stack -> Container -> Stack         -- apila el contenedor indicado en la pila
+stackS (Sta contsS capacidadStack) contenedor = Sta ((++) contsS [contenedor]) capacidadStack -}
+
+stack1 = newS 7
+testStack = [freeCellsS stack1 == 7]
+
 
 {-barco = cargarV barco cont
 otroBarco = cargarV barco cont
