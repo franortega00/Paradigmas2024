@@ -35,6 +35,11 @@ ruta = newR ["MDQ", "Bahamas", "Kuwait"]
 barco1 = newV 2 20 ruta 
 celdasvaciasbarco1 = freeCellsV barco1
 
+<<<<<<< HEAD
 --loadV :: Vessel -> Container -> Vessel -- carga un contenedor en el barco
+=======
+--freeCellsV :: Vessel -> Int            -- responde la celdas disponibles en el barco
+--loadV :: Vessel -> Container -> Vessel -- carga un contenedor en el barco (mechear stack)
+>>>>>>> b7f7e3d9bf44b098e219cc27f59726b1fd828813
 --unloadV :: Vessel -> String -> Vessel  -- responde un barco al que se le han descargado los contenedores que podían descargarse en la ciudad
 --netV :: Vessel -> Int                  -- responde el peso neto en toneladas de los contenedores en el barco
