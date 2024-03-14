@@ -13,7 +13,7 @@ Dudas!
 {-
 FUNCIONES A HACER:
     Stack --> newS ✓ , freeCellsS ✓ , stackS ✓ , netS ✓ , holdsS ✓ , popS ✓
-    Vessel --> newV, freeCellsV, loadV, unloadV, netV
+    Vessel --> newV ✓, freeCellsV, loadV, unloadV, netV
 FUNCIONES A PROBAR:    
     Container --> newC, destinationC, netC 
     Route --> newR
@@ -66,6 +66,8 @@ entracontainer = holdsS stack40 container1 ruta
 entracontainer2 = holdsS stack40 container3 ruta
 stack60 = popS stack50 "Destino inexistente"
 stack70= popS stack50 "Kuwait"
+
+barco1 = newV 10 20 ruta 
 
 {-barco = cargarV barco cont
 otroBarco = cargarV barco cont
