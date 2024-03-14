@@ -25,6 +25,6 @@ newV cantidad_pilas altura_pilas ruta = Ves lista_pilas ruta
 barco1 = newV 6 20 ruta 
 
 --freeCellsV :: Vessel -> Int            -- responde la celdas disponibles en el barco
---loadV :: Vessel -> Container -> Vessel -- carga un contenedor en el barco
+--loadV :: Vessel -> Container -> Vessel -- carga un contenedor en el barco (mechear stack)
 --unloadV :: Vessel -> String -> Vessel  -- responde un barco al que se le han descargado los contenedores que podían descargarse en la ciudad
 --netV :: Vessel -> Int                  -- responde el peso neto en toneladas de los contenedores en el barco
