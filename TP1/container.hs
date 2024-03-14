@@ -1,4 +1,4 @@
-module Container ( Container, newC, destinationC, netC )
+module Container ( Container, newC, destinationC, netC)
  where
 
 data Container = Con String Int deriving (Eq, Show)-- (Eq, Show) para q use el igual y el show pre establecido        -- (todo desps del = == constructor)
@@ -10,7 +10,7 @@ newC destino num = contenedor --COMO CONSTRUIR UN NUEVO CONTAINER
 destinationC :: Container -> String  -- responde la ciuda destino del contenedor
 destinationC (Con destino num) = destino --(?)
 
-netC :: Container -> Int             -- responde el peso en toneladas del contenedor
+netC :: Container -> Int   -- responde el peso en toneladas del contenedor
 netC (Con destino num) = num
 
- 
+

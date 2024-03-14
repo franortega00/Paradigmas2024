@@ -1,23 +1,35 @@
-module Stack ( Stack, newS, freeCellsS, stackS, netS , holdsS) 
---, holdsS, popS )
- where
-
-import Container
-
-import Route
-
+import Data.List (elemIndex)
+--creamos el tipo de dato Route
+data Route = Rou [ String ] deriving (Eq, Show)
+data Container = Con String Int deriving (Eq, Show)
 data Stack = Sta [ Container ] Int deriving (Eq, Show)
 
-newS :: Int -> Stack -- construye una Pila vacia con la capacidad indicada 
-newS capacidad = Sta [] capacidad 
+newR :: [ String ] -> Route                    -- construye una ruta segun una lista de ciudades
+newR listaDestinos = Rou listaDestinos
+
+inOrderR :: Route -> String -> String -> Bool
+inOrderR (Rou strs) str1 str2 = case (elemIndex str1 strs, elemIndex str2 strs) of
+    (Just index1, Just index2) -> index1 <= index2
+    _                           -> False
+
+destinationC :: Container -> String  -- responde la ciuda destino del contenedor
+destinationC (Con destino num) = destino --(?)
+
+ultimoDestinoPila :: [Container] -> String -- función para informar el ultimo destino de una pila de Containers 
+ultimoDestinoPila = last . map destinationC
 
 stackS :: Stack -> Container -> Stack         -- apila el contenedor indicado en la pila 
 stackS (Sta contsS capacidadStack) contenedor = Sta ((++) contsS [contenedor]) capacidadStack
 
--- variacion de StackS :: que pasa si el stack ya esta full de peso?? MAX == 20 tons                             
+newC :: String -> Int -> Container   -- construye un Contenedor dada una ciudad de destino y un peso en toneladas
+newC destino num = contenedor --COMO CONSTRUIR UN NUEVO CONTAINER
+    where contenedor = Con destino num
 
-freeCellsS :: Stack -> Int -- responde la celdas disponibles en la pila
-freeCellsS (Sta contsS capacidadStack) = capacidadStack - length contsS
+netC :: Container -> Int   -- responde el peso en toneladas del contenedor
+netC (Con destino num) = num
+
+newS :: Int -> Stack -- construye una Pila vacia con la capacidad indicada 
+newS capacidad = Sta [] capacidad 
 
 sumarInts :: [Container] -> Int -- función para sumar todos los Ints dentro de una colección de tipos Container
 sumarInts = sum . map netC
@@ -26,9 +38,6 @@ netS :: Stack -> Int  -- responde el peso neto de los contenedores en la pila
 netS (Sta contsS capacidadStack) = toneladas
     where
         toneladas = sumarInts contsS
-                                
-ultimoDestinoPila :: [Container] -> String -- función para informar el ultimo destino de una pila de Containers 
-ultimoDestinoPila = last . map destinationC
 
 holdsS :: Stack -> Container -> Route -> Bool -- indica si la pila puede aceptar el contenedor considerando las ciudades en la ruta
 holdsS (Sta contsS capacidadStack) contenedor ruta | inOrderR ruta ultimo_destino destino_contenedor == True = True
@@ -38,9 +47,20 @@ holdsS (Sta contsS capacidadStack) contenedor ruta | inOrderR ruta ultimo_destin
         destino_contenedor = destinationC contenedor
 
 
-{-
-popS :: Stack -> String -> Stack              -- quita del tope los contenedores con destino en la ciudad indicada
--}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ruta = newR ["MDQ", "Bahamas", "Kuwait"] 
 
