@@ -1,5 +1,4 @@
-module Stack ( Stack, newS, freeCellsS, stackS, netS , holdsS) 
---, holdsS, popS )
+module Stack ( Stack, newS, freeCellsS, stackS, netS , holdsS , popS )
  where
 
 import Container
@@ -38,24 +37,12 @@ holdsS (Sta contsS capacidadStack) contenedor ruta | inOrderR ruta ultimo_destin
         destino_contenedor = destinationC contenedor
 
 
-popS :: Stack -> String -> Stack -- quita del tope los contenedores con destino en la ciudad indicada
-popS (Sta contsS capacidadStack) ciudad_actual | ultimoDestino == ciudad_actual = stack_nuevo 
+popS :: Stack -> String -> Stack -- quita del tope los contenedores con destino en la ciudad indicada - funcion recursiva (en caso de haber mas de dos ultimos contenedores con el destino deseado)
+popS (Sta contsS capacidadStack) ciudad_actual | ultimoDestino == ciudad_actual = popS stack_nuevo ciudad_actual
                                                 | otherwise = (Sta contsS capacidadStack)
     where
         ultimoDestino = ultimoDestinoPila contsS
         stack_nuevo = (Sta (init contsS) capacidadStack)
 
 
-ruta = newR ["MDQ", "Bahamas", "Kuwait"] 
-
-stack10 = newS 30
-container1 = newC "MDQ" 5
-container2 = newC "Bahamas" 5
-container3 = newC "Kuwait" 5
-stack20 = stackS stack10 container1 
-stack30 = stackS stack20 container2
-stack40 = stackS stack30 container3
-pesototal = netS stack40
-entracontainer = holdsS stack40 container1 ruta
-entracontainer2 = holdsS stack40 container3 ruta
 
