@@ -21,20 +21,19 @@ newV cantidad_pilas altura_pilas ruta = Ves lista_pilas ruta
         lista_pilas = crearListaDePilas cantidad_pilas altura_pilas
 
 celdasVaciasTotales :: [Stack] -> Int
-celdasVaciasTotales lista | length == 1 = freeCellsS (last lista)
-                                otherwise = lista_recur
+celdasVaciasTotales lista | (length lista) > 1 = lista_recur
+                            | otherwise = (freeCellsS (last lista))
     where
-        lista_recur = freeCellsS (head lista) + (celdasVaciasTotales tail)
+        lista_recur = freeCellsS (head lista) + (celdasVaciasTotales (tail lista))
 
 freeCellsV :: Vessel -> Int  -- responde la celdas disponibles en el barco
-freeCellsV (Ves [listapilas] ruta) = sumaVaciasTotales
+freeCellsV (Ves lista ruta) = sumaVaciasTotales
     where
-        sumaVaciasTotales = celdasVaciasTotales listapilas 
-
-
+        sumaVaciasTotales = celdasVaciasTotales lista
 
 ruta = newR ["MDQ", "Bahamas", "Kuwait"] 
 barco1 = newV 2 20 ruta 
+celdasvaciasbarco1 = freeCellsV barco1
 
 --loadV :: Vessel -> Container -> Vessel -- carga un contenedor en el barco
 --unloadV :: Vessel -> String -> Vessel  -- responde un barco al que se le han descargado los contenedores que podían descargarse en la ciudad
