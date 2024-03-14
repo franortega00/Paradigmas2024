@@ -38,9 +38,13 @@ holdsS (Sta contsS capacidadStack) contenedor ruta | inOrderR ruta ultimo_destin
         destino_contenedor = destinationC contenedor
 
 
-{-
-popS :: Stack -> String -> Stack              -- quita del tope los contenedores con destino en la ciudad indicada
--}
+popS :: Stack -> String -> Stack -- quita del tope los contenedores con destino en la ciudad indicada
+popS (Sta contsS capacidadStack) ciudad_actual | ultimoDestino == ciudad_actual = stack_nuevo 
+                                                | otherwise = (Sta contsS capacidadStack)
+    where
+        ultimoDestino = ultimoDestinoPila contsS
+        stack_nuevo = (Sta (init contsS) capacidadStack)
+
 
 ruta = newR ["MDQ", "Bahamas", "Kuwait"] 
 
