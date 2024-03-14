@@ -12,11 +12,10 @@ Dudas!
 -}
 {-
 FUNCIONES A HACER:
-    Stack --> newS ✓ , freeCellsS ✓ , stackS ✓ , netS ✓ , holdsS ✓ , popS ✓
+    Stack ✓ --> newS ✓ , freeCellsS ✓ , stackS ✓ , netS ✓ , holdsS ✓ , popS ✓
     Vessel --> newV, freeCellsV, loadV, unloadV, netV
-FUNCIONES A PROBAR:    
-    Container --> newC, destinationC, netC 
-    Route --> newR
+    Container ✓ --> newC ✓, destinationC ✓, netC ✓
+    Route ✓ --> newR ✓, inOrderR ✓
 -}
 
 {-
