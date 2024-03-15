@@ -26,7 +26,7 @@ newV cantidad_pilas altura_pilas ruta = Ves lista_pilas ruta
 
 celdasVaciasTotales :: [Stack] -> Int
 celdasVaciasTotales lista | (length lista) > 1 = lista_recur
-                            | otherwise = (freeCellsS (last lista))
+                          | otherwise = (freeCellsS (last lista))
     where
         lista_recur = freeCellsS (head lista) + (celdasVaciasTotales (tail lista))
 
@@ -37,7 +37,7 @@ freeCellsV (Ves lista ruta) = sumaVaciasTotales
 
 loadV :: Vessel -> Container -> Vessel -- carga un contenedor en el barco
 loadV (Ves lista ruta) contenedor | existenPosiblesPilas == True = (Ves listaNueva ruta)
-                                 | otherwise =  (Ves lista ruta) -- el contenedor no entra en ninguna pila y devuelve el barco original
+                                  | otherwise =  (Ves lista ruta) -- el contenedor no entra en ninguna pila y devuelve el barco original
     where
         posiblesPilas = [pila | pila <- lista , holdsS pila contenedor ruta == True]
         pilasNoDisponibles = [pila | pila <- lista , holdsS pila contenedor ruta == False]
