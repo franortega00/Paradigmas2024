@@ -12,18 +12,11 @@ Dudas!
 -}
 {-
 FUNCIONES A HACER:
-<<<<<<< HEAD
     Stack --> newS ✓ , freeCellsS ✓ , stackS ✓ , netS ✓ , holdsS ✓ , popS ✓
-    Vessel --> newV ✓, freeCellsV, loadV, unloadV, netV
+    Vessel --> newV ✓, freeCellsV ✓ , loadV, unloadV, netV
 FUNCIONES A PROBAR:    
     Container --> newC, destinationC, netC 
     Route --> newR
-=======
-    Stack ✓ --> newS ✓ , freeCellsS ✓ , stackS ✓ , netS ✓ , holdsS ✓ , popS ✓
-    Vessel --> newV, freeCellsV, loadV, unloadV, netV
-    Container ✓ --> newC ✓, destinationC ✓, netC ✓
-    Route ✓ --> newR ✓, inOrderR ✓
->>>>>>> b7f7e3d9bf44b098e219cc27f59726b1fd828813
 -}
 
 {-
@@ -75,6 +68,7 @@ stack60 = popS stack50 "Destino inexistente"
 stack70= popS stack50 "Kuwait"
 
 barco1 = newV 10 20 ruta 
+celdasvaciasbarco1 = freeCellsV barco1
 
 {-barco = cargarV barco cont
 otroBarco = cargarV barco cont
