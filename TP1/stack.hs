@@ -20,25 +20,28 @@ freeCellsS (Sta contsS capacidadStack) = capacidadStack - length contsS
 
 sumarInts :: [Container] -> Int -- función para sumar todos los Ints dentro de una colección de tipos Container
 sumarInts = sum . map netC
+--otra definicion de sumarInts
+{-sumarInts2 :: [Container] -> Int -- función para sumar todos los Ints dentro de una colección de tipos Container
+lista_nums contenedores = [pesos | Con nombre pesos <- contenedores]
+sumarInts2 = sum lista_nums-}
 
 netS :: Stack -> Int  -- responde el peso neto de los contenedores en la pila
 netS (Sta contsS capacidadStack) = toneladas
-    where
-        toneladas = sumarInts contsS
+    where toneladas = sumarInts contsS
                                 
 ultimoDestinoPila :: [Container] -> String -- función para informar el ultimo destino de una pila de Containers 
 ultimoDestinoPila = last . map destinationC
 
 holdsS :: Stack -> Container -> Route -> Bool -- indica si la pila puede aceptar el contenedor considerando las ciudades en la ruta
-holdsS (Sta contsS capacidadStack) contenedor ruta | length contsS == 0 = True
-                                                    |inOrderR ruta ultimo_destino destino_contenedor == True = True
+holdsS (Sta contsS capacidadStack) contenedor ruta  | length contsS == 0 = True
+                                                    | inOrderR ruta ultimo_destino destino_contenedor == True = True
                                                     | otherwise = False
     where
         ultimo_destino = ultimoDestinoPila contsS 
         destino_contenedor = destinationC contenedor
 
 popS :: Stack -> String -> Stack -- quita del tope los contenedores con destino en la ciudad indicada - funcion recursiva (en caso de haber mas de dos ultimos contenedores con el destino deseado)
-popS (Sta contsS capacidadStack) ciudad_actual | ultimoDestino == ciudad_actual = popS stack_nuevo ciudad_actual
+popS (Sta contsS capacidadStack) ciudad_actual  | ultimoDestino == ciudad_actual = popS stack_nuevo ciudad_actual
                                                 | otherwise = (Sta contsS capacidadStack)
     where
         ultimoDestino = ultimoDestinoPila contsS
