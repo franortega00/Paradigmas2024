@@ -1,5 +1,5 @@
-module Vessel (Vessel, newV , freeCellsV)
--- , loadV, unloadV, netV )
+module Vessel (Vessel, newV , freeCellsV , loadV) 
+--, unloadV, netV )
  where
 
 import Container
@@ -46,7 +46,6 @@ loadV (Ves lista ruta) contenedor | existenPosiblesPilas == True = (Ves listaNue
         posibilidadesRecortada = tail posiblesPilas
         listaConsolidada = (++) posibilidadesRecortada pilasNoDisponibles
         listaNueva = (++) listaConsolidada modificacionPila
-
 
 --unloadV :: Vessel -> String -> Vessel  -- responde un barco al que se le han descargado los contenedores que podían descargarse en la ciudad
 --netV :: Vessel -> Int                  -- responde el peso neto en toneladas de los contenedores en el barco

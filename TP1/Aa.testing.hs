@@ -2,6 +2,7 @@ import Container
 import Route
 import Stack
 import Vessel
+import Vessel (loadV)
 
 {-
 Dudas!
@@ -13,7 +14,7 @@ Dudas!
 {-
 FUNCIONES A HACER:
     Stack --> newS ✓ , freeCellsS ✓ , stackS ✓ , netS ✓ , holdsS ✓ , popS ✓
-    Vessel --> newV ✓, freeCellsV ✓ , loadV, unloadV, netV
+    Vessel --> newV ✓, freeCellsV ✓ , loadV ✓, unloadV, netV
 FUNCIONES A PROBAR:    
     Container --> newC, destinationC, netC 
     Route --> newR
@@ -66,8 +67,13 @@ entracontainer = holdsS stack40 container1 ruta
 entracontainer2 = holdsS stack40 container3 ruta
 stack60 = popS stack50 "Destino inexistente"
 stack70= popS stack50 "Kuwait"
+barco1 = newV 6 20 ruta 
+barco1Cargado = loadV barco1 container2
+barco1Recargado = loadV barco1Cargado container1
+barco1Requetecargado = loadV barco1Recargado container3
+barco1Hipercargado = loadV barco1Requetecargado container4
+-- Preguntaza, con que criterio el barco carga???? Como se optimiza?
 
-barco1 = newV 10 20 ruta 
 celdasvaciasbarco1 = freeCellsV barco1
 
 {-barco = cargarV barco cont
