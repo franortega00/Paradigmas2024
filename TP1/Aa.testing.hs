@@ -22,21 +22,24 @@ import Vessel
 -}
 
 
-{- MOUDLO CONTAINER -}
+{- MODULO CONTAINER -}
+-- newC ✓, destinationC ✓, netC ✓
 cont = newC "MDQ" 5
 destino = destinationC cont
 peso = netC cont
 testContainer = [destino == "MDQ", peso == 5]
 
 
-{- MOUDLO ROUTE -}
+{- MODULO ROUTE -}
+-- newR ✓, inOrderR ✓
 ruta = newR ["MDQ", "Bahamas", "Kuwait"] 
 ordendestinos0 = inOrderR ruta "MDQ" "Kuwait" -- = True
 ordendestinos1 = inOrderR ruta "Kuwait" "MDQ" -- = False
 ordendestinos2 = inOrderR ruta "Kuwait" "Ruta inexistente" -- = False
+testRoute = [ordendestinos0 == True, ordendestinos1 == False, ordendestinos2 == False]
 
-
-{- MOUDLO STACK -}
+{- MODULO STACK -}
+-- newS, freeCellsS, stackS, netS , holdsS , popS
 stack1 = newS 7
 stack10 = newS 30
 container1 = newC "MDQ" 5
@@ -65,4 +68,10 @@ barco1Hipercargado = loadV barco1Requetecargado container4
 -- Preguntaza, con que criterio el barco carga???? Como se optimiza?
 
 celdasvaciasbarco1 = freeCellsV barco1
-testStack = [freeCellsS stack1 == 7]
+testStack = [pesototal == 15, netS stack50 == 20, freeCellsS stack1 == 7]
+
+
+
+
+
+testModulos = [testContainer, testRoute, testStack]
