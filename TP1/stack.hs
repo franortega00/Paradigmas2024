@@ -46,7 +46,7 @@ popS (Sta contsS capacidadStack) ciudad_actual  | ultimoDestino == ciudad_actual
                                                 | otherwise = Sta contsS capacidadStack
     where
         ultimoDestino = ultimoDestinoPila contsS
-        stack_nuevo = (Sta (init contsS) capacidadStack)
+        stack_nuevo = Sta (init contsS) capacidadStack
 
 
 
