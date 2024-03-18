@@ -8,17 +8,16 @@ import Route
 data Stack = Sta [ Container ] Int deriving (Eq, Show)
 
 newS :: Int -> Stack -- construye una Pila vacia con la capacidad indicada 
-newS capacidad = Sta [] capacidad 
+newS capacidad = Sta [] capacidad -- capacidad = celdas disponibles
 
 stackS :: Stack -> Container -> Stack         -- apila el contenedor indicado en la pila 
-stackS (Sta contsS capacidadStack) contenedor = Sta ((++) contsS [contenedor]) capacidadStack
-
--- variacion de StackS :: que pasa si el stack ya esta full de peso?? MAX == 20 tons                             
-
+stackS (Sta contsS capacidadStack) contenedor | capacidadStack == length contsS = Sta contsS capacidadStack --si ya esta a su tope, no lo agrega (freeCells == 0)
+                                              | otherwise = Sta ((++) contsS [contenedor]) capacidadStack
+                            
 freeCellsS :: Stack -> Int -- responde la celdas disponibles en la pila
 freeCellsS (Sta contsS capacidadStack) = capacidadStack - length contsS
 
-sumarInts :: [Container] -> Int -- función para sumar todos los Ints dentro de una colección de tipos Container
+sumarInts :: [Container] -> Int -- función para sumar todos los Ints (pesos) dentro de una colección de tipos Container
 sumarInts = sum . map netC
 --otra definicion de sumarInts
 {-sumarInts2 :: [Container] -> Int -- función para sumar todos los Ints dentro de una colección de tipos Container
