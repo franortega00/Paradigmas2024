@@ -39,9 +39,22 @@ ordendestinos1 = inOrderR ruta "Kuwait" "MDQ" -- = False
 ordendestinos2 = inOrderR ruta "Kuwait" "Ruta inexistente" -- = False
 testRoute = [ordendestinos0 == True, ordendestinos1 == False, ordendestinos2 == False]
 
+{- MODULO VESSEL -}
+-- newV , freeCellsV , loadV
+
+barco = newV 1 1 ruta
+testBarco = loadV barco cont 
+barco2 = newV 2 0 ruta --si tiene 0 de altura, no carga
+
+testBarcoDesborde = [netV testBarco == netC cont, freeCellsV barco2 == 0, loadV barco2 cont == barco2] -- no lo carga (lo deja como estaba)
+
+--barco_descargado = unloadV testBarco "MDQ" --como prueba cargar y descargar???????
+
+
 
 {- MODULO STACK -}
 -- newS, freeCellsS, stackS, netS , holdsS , popS
+
 stack1 = newS 7
 stack10 = newS 30
 container1 = newC "MDQ" 5
@@ -73,10 +86,21 @@ barco1Hipercargado = loadV barco1Requetecargado container4
 -- Preguntaza, con que criterio el barco carga???? Como se optimiza?
 
 celdasvaciasbarco1 = freeCellsV barco1
+barcox = newV 3 1 ruta
+barcoCargado = loadV barcox container1
+bbb = popS stack50 "Kuwait"
+barcoDescargado = unloadV barcoCargado "MDQ"
+barcoDesDescargado = unloadV barcoDescargado "MDQ"
+bB = holdsS stack40 container4 ruta
 
 
 
 
 
+testModulos = [testContainer, testRoute]
 
-testModulos = [testContainer, testRoute, testStack]
+
+
+-- probar bahias 0, casos extremos
+-- casos simples pero para q se rompa
+-- que el test sea sencillo para verificar que no se puede desbordar
