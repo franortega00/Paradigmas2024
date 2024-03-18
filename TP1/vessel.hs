@@ -14,10 +14,10 @@ container1 = newC "MDQ" 5
 
 crearListaDePilas :: Int -> Int -> [Stack]
 crearListaDePilas cantidad altura | cantidad > 1 = lista_stacks
-                                    | otherwise = [newS altura]
+                                  | otherwise = [newS altura]
     where
         stack_nuevo = newS altura
-        lista_stacks = (++) [stack_nuevo] (crearListaDePilas (cantidad-1) altura)
+        lista_stacks = stack_nuevo : crearListaDePilas (cantidad - 1) altura --constructor de listas
 
 newV :: Int -> Int -> Route -> Vessel  -- construye un barco según una cnatida de bahias, la altura de las mismas y una ruta
 newV cantidad_pilas altura_pilas ruta = Ves lista_pilas ruta
