@@ -104,3 +104,6 @@ testModulos = [testContainer, testRoute]
 -- probar bahias 0, casos extremos
 -- casos simples pero para q se rompa
 -- que el test sea sencillo para verificar que no se puede desbordar
+{-test = [funcion, 
+| algo,
+]-}
