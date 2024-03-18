@@ -7,7 +7,7 @@ import Vessel
 -- variacion de StackS :: que pasa si el stack ya esta full de peso?? MAX == 20 tons               
 --  ̶v̶a̶r̶i̶a̶c̶i̶o̶n̶ ̶d̶e̶ ̶p̶o̶p̶S̶ ̶:̶:̶ ̶q̶u̶e̶ ̶p̶a̶s̶a̶ ̶s̶i̶ ̶h̶a̶y̶ ̶m̶a̶s̶ ̶d̶e̶ ̶u̶n̶ ̶c̶o̶n̶t̶a̶i̶n̶e̶r̶ ̶u̶l̶t̶i̶m̶o̶s̶ ̶e̶n̶ ̶e̶s̶a̶ ̶p̶i̶l̶a̶ ̶c̶o̶n̶ ̶e̶s̶e̶ ̶d̶e̶s̶t̶i̶n̶o̶?̶
 -- resolver holdS --AGREGAR SI ESTOY EN EL MEDIO DE LA RUTA (no solo acepta el ultimo)
--}
+-- Cambiar funcion inOrder-}
 
 {- FUNCIONES A HACER:
     Stack --> newS ✓ , freeCellsS ✓ , stackS ✓ , netS ✓ , holdsS (corregir) , popS ✓
