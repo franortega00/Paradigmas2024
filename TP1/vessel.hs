@@ -47,3 +47,5 @@ loadV (Ves lista ruta) contenedor | length posiblesPilas > 0 = Ves listaNueva ru
 
 --unloadV :: Vessel -> String -> Vessel  -- responde un barco al que se le han descargado los contenedores que podían descargarse en la ciudad
 --netV :: Vessel -> Int                  -- responde el peso neto en toneladas de los contenedores en el barco
+
+
