@@ -50,5 +50,5 @@ unloadV (Ves lista ruta) ciudad = Ves listaNueva ruta
     where listaNueva = [popS stack ciudad | stack <- lista] 
 
 netV :: Vessel -> Int                  -- responde el peso neto en toneladas de los contenedores en el barco
-netV (Ves lista ruta) = foldr sum 0.netS lista 
+netV (Ves lista ruta) = sum [netS stack | stack <- lista] 
 
