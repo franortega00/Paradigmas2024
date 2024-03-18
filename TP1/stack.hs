@@ -35,6 +35,7 @@ holdsS :: Stack -> Container -> Route -> Bool -- indica si la pila puede aceptar
 holdsS (Sta contsS capacidadStack) contenedor ruta  | length contsS == 0 = True
                                                     | inOrderR ruta ultimo_destino destino_contenedor == True = False
                                                     | netS (Sta contsS capacidadStack) + netC contenedor > 20 = False
+                                                    | freeCellsS (Sta contsS capacidadStack) == 0 = False
                                                     | otherwise = True 
     where
         ultimo_destino = ultimoDestinoPila contsS 
