@@ -29,18 +29,25 @@ rutaABC = newR ["Armenia", "Brunei", "Comoros"]
 testRoute = [   inOrderR rutaABC "Armenia" "Brunei", -- = True
                 not(inOrderR rutaABC "Comoros" "Brunei"), -- not(False)
                 not(inOrderR rutaABC "Armenia" "Ruta inexistente") {-not(False)-},
-                testF (newR [])
+                testF (newR []) -- prueba de ruta vacia []
                 ]
 
 contA = newC "Armenia" 10
 contB = newC "Brunei" 10
+
+{-Pruebas de contenedores vacios o inconsistentes-}
+contVacioTest = foldr (&&) True [ testF (newC "Brunei" 0), testF (newC "Brunei" (-10))]
+
 {-Pruebas de barco vacios o inconsistentes-}
 barcoVacioTest = foldr (&&) True [ testF (newV 0 0 rutaABC), testF (newV 1 0 rutaABC), testF (newV (-1) 0 rutaABC)]
-barco = newV 3 1 rutaABC --bahias, alturas
-barcoA = loadV barco contA
-barcoAB = loadV barcoA contB --peso y orden
+barco = newV 1 3 rutaABC --bahias, alturas
+barcoB = loadV barco contB
+barcoBA = loadV barcoB contA --peso y orden
+barcoBAB = loadV barcoBA contB
+
 
 testVessel = [
-        barcoBA == barcoBAB --como ya se excedio el limite de altura, mantiene igual
+        barcoBA == barcoBAB , --como ya se excedio el limite de altura, mantiene igual
+        barcoVacioTest
             ]
 
