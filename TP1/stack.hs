@@ -32,8 +32,8 @@ ultimoDestinoPila :: [Container] -> String -- función para informar el ultimo d
 ultimoDestinoPila = last . map destinationC
 
 holdsS :: Stack -> Container -> Route -> Bool -- indica si la pila puede aceptar el contenedor considerando las ciudades en la ruta
-holdsS (Sta contsS capacidadStack) contenedor ruta  | length contsS == 0 = True
-                                                    | inOrderR ruta ultimo_destino destino_contenedor == True = False
+holdsS (Sta contsS capacidadStack) contenedor ruta  | freeCellsS (Sta contsS capacidadStack) == 0 = False
+                                                    | length contsS > 0 && inOrderR ruta ultimo_destino destino_contenedor = False
                                                     | netS (Sta contsS capacidadStack) + netC contenedor > 20 = False
                                                     | otherwise = True 
     where
@@ -41,11 +41,11 @@ holdsS (Sta contsS capacidadStack) contenedor ruta  | length contsS == 0 = True
         destino_contenedor = destinationC contenedor
 
 popS :: Stack -> String -> Stack -- quita del tope los contenedores con destino en la ciudad indicada - funcion recursiva (en caso de haber mas de dos ultimos contenedores con el destino deseado)
-popS (Sta contsS capacidadStack) ciudad_actual  | ultimoDestino == ciudad_actual = popS stack_nuevo ciudad_actual
+popS (Sta contsS capacidadStack) ciudad_actual  | length contsS > 0 && ultimoDestino == ciudad_actual = popS stack_nuevo ciudad_actual
                                                 | otherwise = Sta contsS capacidadStack
     where
         ultimoDestino = ultimoDestinoPila contsS
-        stack_nuevo = (Sta (init contsS) capacidadStack)
+        stack_nuevo = Sta (init contsS) capacidadStack
 
 
 

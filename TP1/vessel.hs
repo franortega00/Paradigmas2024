@@ -1,5 +1,4 @@
-module Vessel (Vessel, newV , freeCellsV , loadV) 
---, unloadV, netV )
+module Vessel (Vessel, newV , freeCellsV , loadV, unloadV, netV )
  where
 
 import Container
@@ -48,7 +47,9 @@ loadV (Ves lista ruta) contenedor | length posiblesPilas > 0 = Ves listaNueva ru
 unloadV :: Vessel -> String -> Vessel  -- responde un barco al que se le han descargado los contenedores que podían descargarse en la ciudad
 unloadV (Ves lista ruta) ciudad = Ves listaNueva ruta
     where listaNueva = [popS stack ciudad | stack <- lista] 
+-- linkear con holdsS
 
 netV :: Vessel -> Int                  -- responde el peso neto en toneladas de los contenedores en el barco
-netV (Ves lista ruta) = foldr sum 0.netS lista 
+netV (Ves [] ruta) = 0
+netV (Ves lista ruta) = sum [netS stack | stack <- lista] 
 
