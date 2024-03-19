@@ -12,7 +12,6 @@ import Vessel
 {- MODULO CONTAINER -}
 -- newC ✓, destinationC ✓, netC ✓
 cont = newC "MDQ" 5
-
 destino = destinationC cont
 peso = netC cont
 testContainer = [destino == "MDQ", peso == 5]

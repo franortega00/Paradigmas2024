@@ -24,28 +24,36 @@ testF action = unsafePerformIO $ do
 
 
 {- Routes -}
--- newV , freeCellsV , loadV, unloadV, netV
+-- newR ✓, inOrderR ✓
 rutaABC = newR ["Armenia", "Brunei", "Comoros"]
 testRoute = [   inOrderR rutaABC "Armenia" "Brunei", -- = True
                 not(inOrderR rutaABC "Comoros" "Brunei"), -- not(False)
                 not(inOrderR rutaABC "Armenia" "Ruta inexistente") {-not(False)-},
-                testF (newR []) -- prueba de ruta vacia []
-                ]
+                testF (newR []), -- prueba de ruta vacia [] (levanta error --> True)
+                True ] -- todo deberia dar True
 
 {- Containers -}
-
-{-Pruebas de contenedores vacios o inconsistentes-}
-testContainer = foldr (&&) True [ testF (newC "Brunei" 0), testF (newC "Brunei" (-10))]
+-- newC ✓, destinationC ✓, netC ✓
+--Pruebas de contenedores vacios o inconsistentes
+containerVacio = foldr (&&) True [testF (newC "Brunei" 0), testF (newC "Brunei" (-10))]
 contA = newC "Armenia" 10
 contB = newC "Brunei" 10
+destinoContA = destinationC contA
+pesoContB = netC contB
+testContainer = [
+                destinoContA == "Armenia", 
+                pesoContB == 10,
+                containerVacio, -- levanta error --> True
+                True ] -- todo deberia dar True
 
 {- Stack -}
-{-Pruebas de contenedores vacios o inconsistentes-}
+-- newS, freeCellsS, stackS, netS , holdsS , popS
+--Pruebas de stacks vacios o inconsistentes
 testStack = foldr (&&) True [ testF (newS 0), testF (newS (-10))]
 
 {- Vessel -}
-
-{-Pruebas de barco vacios o inconsistentes-}
+-- newV , freeCellsV , loadV, unloadV, netV
+--Pruebas de barco vacios o inconsistentes
 barcoVacioTest = foldr (&&) True [ testF (newV 0 0 rutaABC), testF (newV 1 0 rutaABC), testF (newV (-1) 0 rutaABC)]
 barco = newV 1 3 rutaABC --bahias, alturas
 barcoB = loadV barco contB
@@ -54,6 +62,6 @@ barcoBAB = loadV barcoBA contB
 
 testVessel = [
         barcoBA == barcoBAB , --como ya se excedio el limite de altura, mantiene igual
-        barcoVacioTest
-            ]
+        barcoVacioTest,
+        True    ] -- todo deberia dar True
 
