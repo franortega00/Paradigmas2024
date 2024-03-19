@@ -4,8 +4,6 @@ import Stack
 import Vessel
 
 {- Dudas!               
-
--- resolver holdS --AGREGAR SI ESTOY EN EL MEDIO DE LA RUTA (no solo acepta el ultimo)
 -}
 
 
