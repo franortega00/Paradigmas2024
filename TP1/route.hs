@@ -1,4 +1,4 @@
-module Route ( Route, newR , inOrderR )
+module Route ( Route, newR , inOrderR)
     where
 
 
@@ -12,9 +12,14 @@ data Route = Rou [ String ] deriving (Eq, Show)
 newR :: [ String ] -> Route                    -- construye una ruta segun una lista de ciudades
 newR listaDestinos = Rou listaDestinos
 
+indiceElemento :: Eq a => a -> [a] -> Maybe Int
+indiceElemento elemento lista = elemIndex elemento lista
 
 -- funcion que compara los index (si es que existen) de los strings que pasemos buscando dentro de la lista del tipo de dato Route
 inOrderR :: Route -> String -> String -> Bool
-inOrderR (Rou strs) str1 str2 = case (elemIndex str1 strs, elemIndex str2 strs) of
-    (Just index1, Just index2) -> index1 <= index2
-    _                           -> False
+inOrderR (Rou lista_ciudades) ciudad1 ciudad2 | index1 <= index2 = True
+                                            | otherwise = False
+    where
+        index1 = indiceElemento ciudad1 lista_ciudades
+        index2 = indiceElemento ciudad2 lista_ciudades
+-- ojo! Cuando hacemos inOrderR de dos ciudades que no existen, arroja True

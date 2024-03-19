@@ -1,4 +1,5 @@
 import Data.List (elemIndex)
+import Language.Haskell.TH (Body)
 --creamos el tipo de dato Route
 data Route = Rou [ String ] deriving (Eq, Show)
 data Container = Con String Int deriving (Eq, Show)
@@ -46,6 +47,8 @@ holdsS (Sta contsS capacidadStack) contenedor ruta | inOrderR ruta ultimo_destin
         ultimo_destino = ultimoDestinoPila contsS 
         destino_contenedor = destinationC contenedor
 
+foldr_Red :: [Int] -> [Int] -> [Bool]
+foldr_Red lista1 lista2 = foldr (==) (last lista2) lista1 
 
 
 
