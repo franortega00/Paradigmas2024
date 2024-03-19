@@ -8,7 +8,7 @@ import Route
 data Stack = Sta [ Container ] Int deriving (Eq, Show)
 
 newS :: Int -> Stack -- construye una Pila vacia con la capacidad indicada 
-newS capacidad = Sta [] capacidad -- capacidad = celdas disponibles
+newS capacidad | capacidad > 0 =  Sta [] capacidad -- capacidad = celdas disponibles
 
 stackS :: Stack -> Container -> Stack         -- apila el contenedor indicado en la pila 
 stackS (Sta contsS capacidadStack) contenedor | capacidadStack == length contsS = Sta contsS capacidadStack --si ya esta a su tope, no lo agrega (freeCells == 0)

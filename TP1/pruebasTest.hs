@@ -39,6 +39,10 @@ testContainer = foldr (&&) True [ testF (newC "Brunei" 0), testF (newC "Brunei" 
 contA = newC "Armenia" 10
 contB = newC "Brunei" 10
 
+{- Stack -}
+{-Pruebas de contenedores vacios o inconsistentes-}
+testStack = foldr (&&) True [ testF (newS 0), testF (newS (-10))]
+
 {- Vessel -}
 
 {-Pruebas de barco vacios o inconsistentes-}
