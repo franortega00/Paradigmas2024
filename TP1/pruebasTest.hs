@@ -18,6 +18,11 @@ testF action = unsafePerformIO $ do
         isException :: SomeException -> Maybe ()
         isException _ = Just ()
 
+
+-- creaciones inconsistentes : Raise Error
+-- acciones no permitidas : No se hacen
+
+
 {- VESSEL -}
 -- newV , freeCellsV , loadV, unloadV, netV
 rutaABC = newR ["Armenia", "Brunei", "Comoros"]
@@ -35,4 +40,7 @@ barco = newV 3 1 rutaABC --bahias, alturas
 barcoA = loadV barco contA
 barcoAB = loadV barcoA contB --peso y orden
 
+testVessel = [
+        barcoBA == barcoBAB --como ya se excedio el limite de altura, mantiene igual
+            ]
 
