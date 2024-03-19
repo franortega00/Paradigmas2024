@@ -20,10 +20,10 @@ crearListaDePilas cantidad altura | cantidad > 1 = lista_stacks --altura == capa
 
 -- "bahia = pila == stack"
 newV :: Int -> Int -> Route -> Vessel  -- construye un barco según una cantida de bahias, la altura de las mismas y una ruta
-newV cantidad_bahias altura_bahias ruta = Ves lista_bahias ruta
-    where
-        lista_bahias = crearListaDePilas cantidad_bahias altura_bahias -- AGREGAR limitante peso stacks
+newV cantidad_bahias altura_bahias ruta | (cantidad_bahias > 0) && (altura_bahias > 0) = Ves lista_bahias ruta
 
+    where
+        lista_bahias = crearListaDePilas cantidad_bahias altura_bahias 
 celdasVaciasTotales :: [Stack] -> Int
 celdasVaciasTotales lista | length lista > 1 = lista_recur
                           | otherwise = freeCellsS (last lista)

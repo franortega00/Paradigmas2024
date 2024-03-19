@@ -10,7 +10,7 @@ data Route = Rou [ String ] deriving (Eq, Show)
 
 -- funcion que arma un tipo de dato Route a partir del formato del constructor
 newR :: [ String ] -> Route                    -- construye una ruta segun una lista de ciudades
-newR listaDestinos = Rou listaDestinos
+newR listaDestinos | length listaDestinos > 0 = Rou listaDestinos
 
 indiceElemento :: Eq a => a -> [a] -> Maybe Int
 indiceElemento elemento lista = elemIndex elemento lista
