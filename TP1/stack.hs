@@ -41,7 +41,7 @@ holdsS (Sta contsS capacidadStack) contenedor ruta  | freeCellsS (Sta contsS cap
         destino_contenedor = destinationC contenedor
 
 popS :: Stack -> String -> Stack -- quita del tope los contenedores con destino en la ciudad indicada - funcion recursiva (en caso de haber mas de dos ultimos contenedores con el destino deseado)
-popS (Sta contsS capacidadStack) ciudad_actual  | ultimoDestino == ciudad_actual = popS stack_nuevo ciudad_actual
+popS (Sta contsS capacidadStack) ciudad_actual  | length contsS > 0 && ultimoDestino == ciudad_actual = popS stack_nuevo ciudad_actual
                                                 | otherwise = Sta contsS capacidadStack
     where
         ultimoDestino = ultimoDestinoPila contsS

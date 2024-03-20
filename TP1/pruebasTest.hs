@@ -59,7 +59,7 @@ testStack = [
             freeCellsS stack2AB == freeCellsS stack2ABC + 1,
             stackVacio,
             stackSobrepasado,
-            -- testF (stackS stack1 (newC "Brunei" 0)),
+            --testF (stackS stack1 (newC "Brunei" 0)), --stack un container inexistente -> deberia levantar error
             not(holdsS stack2AB contC rutaABC), -- destino del contenedor a agregar es posterior al ultimo en la pila
             not(holdsS stack2AB contA rutaABC), -- se pasa de peso
             not(holdsS stack2ABC contC rutaABC), -- stack ya lleno
@@ -68,7 +68,6 @@ testStack = [
             popS stack2ABC "Comoros" == stack2AB, --pop correcto
             popS stack2ABC "Brunei" == stack2ABC, --no se puede sacar xq el destino de arriba de todo es "Comoros"
             popS stack1A "ruta inexistente" == stack1A,
-            --testF (stackS stack1 (newC "destino" 0)), --stack un container inexistente -> levanta error
             testF(popS (newS 0) "ruta inexistente"), --popS sobre un stack vacio -> levanta error
             popS stack1 "Armenia" == stack1, --popS sobre stack vacío
             popS stack2AA "Armenia" == stack2, --popS recursivo
