@@ -17,8 +17,8 @@ indiceElemento elemento lista = elemIndex elemento lista
 
 -- funcion que compara los index (si es que existen) de los strings que pasemos buscando dentro de la lista del tipo de dato Route
 inOrderR :: Route -> String -> String -> Bool
-inOrderR (Rou lista_ciudades) ciudad1 ciudad2 | index1 <= index2 = True
-                                            | otherwise = False
+inOrderR (Rou lista_ciudades) ciudad1 ciudad2 | index1 < index2 = True --mayor estricto, A no esta antes que A
+                                              | otherwise = False
     where
         index1 = indiceElemento ciudad1 lista_ciudades
         index2 = indiceElemento ciudad2 lista_ciudades
