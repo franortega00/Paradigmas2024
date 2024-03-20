@@ -74,7 +74,7 @@ testStack = [
             True ]
 
 {- Vessel -}
--- newV , freeCellsV , loadV, unloadV, netV
+-- newV ✓, freeCellsV ✓, loadV ✓, unloadV , netV ✓
 --Pruebas de barco vacios o inconsistentes
 barcoVacioTest = foldr (&&) True [ testF (newV 0 0 rutaABC), testF (newV 1 0 rutaABC), testF (newV (-1) 0 rutaABC)]
 barcoSobrepasadoTest = testF (loadV barcoBA contB)
@@ -82,12 +82,19 @@ testRutaVacia = testF (newV 3 3 (newR [])) --si la ruta falla no cree que barco
 barco = newV 1 3 rutaABC --bahias, alturas
 barcoB = loadV barco contB
 barcoBA = loadV barcoB contA --peso y orden
-
-
+barcoBB = loadV barcoB contB
 testVessel = [
         barcoVacioTest,
         barcoSobrepasadoTest,
-        testF (loadV barcoB (newC "Brunei" 0)), --cargo un container fallido
+        --que no me deje CREAR barco con lista FALLIDA
+        testF (loadV barcoB (newC "Brunei" 0)), --cargo un container fallido --> error
+        freeCellsV barcoBA == 1,
+        freeCellsV barco == 3,
+        netV barcoBA == netC contB + netC contA,
+        unloadV barcoBA "Armenia" == barcoB,
+        unloadV barcoBB "Brunei" == barco, --descarga todos los de ese puerto
+        unloadV barcoBB "Armenia" == barcoBB, --no descarga nada en ese puerto
+        unloadV barco "Marte" == barco, --no saca nada de barco sin container (y no falla con ruta inexistente)
         True    ] -- todo deberia dar True
 
 testModulos = [testRoute,testContainer,testStack,testVessel]
