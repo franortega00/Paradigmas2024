@@ -37,7 +37,7 @@ freeCellsV (Ves lista ruta) = sumaVaciasTotales
 
 loadV :: Vessel -> Container -> Vessel -- carga un contenedor en el barco
 loadV (Ves lista ruta) contenedor | length posiblesPilas > 0 = Ves listaNueva ruta
-                                  | otherwise = Ves lista ruta -- el contenedor no entra en ninguna pila y devuelve el barco original
+                                  | otherwise = error "No se pudo cargar el contenedor en el barco"
     where
         posiblesPilas = [pila | pila <- lista , holdsS pila contenedor ruta] -- == True
         pilasNoDisponibles = [pila | pila <- lista , not (holdsS pila contenedor ruta)] -- == False
@@ -49,7 +49,7 @@ unloadV (Ves lista ruta) ciudad = Ves listaNueva ruta
     where listaNueva = [popS stack ciudad | stack <- lista] 
 -- linkear con holdsS
 
-netV :: Vessel -> Int                  -- responde el peso neto en toneladas de los contenedores en el barco
+netV :: Vessel -> Int  -- responde el peso neto en toneladas de los contenedores en el barco
 netV (Ves [] ruta) = 0
 netV (Ves lista ruta) = sum [netS stack | stack <- lista] 
 

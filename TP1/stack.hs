@@ -11,7 +11,7 @@ newS :: Int -> Stack -- construye una Pila vacia con la capacidad indicada
 newS capacidad | capacidad > 0 =  Sta [] capacidad -- capacidad = celdas disponibles
 
 stackS :: Stack -> Container -> Stack         -- apila el contenedor indicado en la pila 
-stackS (Sta contsS capacidadStack) contenedor | capacidadStack == length contsS = Sta contsS capacidadStack --si ya esta a su tope, no lo agrega (freeCells == 0)
+stackS (Sta contsS capacidadStack) contenedor | capacidadStack == length contsS = error "No se puede agregar el contenedor; El stack ya estaba completo"
                                               | otherwise = Sta ((++) contsS [contenedor]) capacidadStack
                             
 freeCellsS :: Stack -> Int -- responde la celdas disponibles en la pila

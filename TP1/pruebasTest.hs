@@ -49,7 +49,19 @@ testContainer = [
 {- Stack -}
 -- newS, freeCellsS, stackS, netS , holdsS , popS
 --Pruebas de stacks vacios o inconsistentes
-testStack = foldr (&&) True [ testF (newS 0), testF (newS (-10))]
+
+stackVacio = foldr (&&) True [ testF (newS 0), testF (newS (-10))]
+stack1 = newS 2
+--contA = newC "Armenia" 10
+--contB = newC "Brunei" 10
+contC = newC "Comoros" 6
+stack1A = stackS stack1 contA
+stack1AB = stackS stack1A contB
+stack1ABC = stackS stack1AB contC
+
+testStack = [
+            stackVacio,
+            True ]
 
 {- Vessel -}
 -- newV , freeCellsV , loadV, unloadV, netV
