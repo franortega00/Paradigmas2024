@@ -59,7 +59,7 @@ testStack = [
             freeCellsS stack2AB == freeCellsS stack2ABC + 1,
             stackVacio,
             stackSobrepasado,
-            --testF (stackS stack1 (newC "Brunei" 0)), --stack un container inexistente -> deberia levantar error
+            testF (netS (stackS stack1 (newC "Brunei" 0))), --stack un container inexistente -> deberia levantar error
             not(holdsS stack2AB contC rutaABC), -- destino del contenedor a agregar es posterior al ultimo en la pila
             not(holdsS stack2AB contA rutaABC), -- se pasa de peso
             not(holdsS stack2ABC contC rutaABC), -- stack ya lleno
