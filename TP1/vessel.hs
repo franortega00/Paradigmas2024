@@ -47,7 +47,6 @@ loadV (Ves lista ruta) contenedor | length posiblesPilas > 0 = Ves listaNueva ru
 unloadV :: Vessel -> String -> Vessel  -- responde un barco al que se le han descargado los contenedores que podían descargarse en la ciudad
 unloadV (Ves lista ruta) ciudad = Ves listaNueva ruta
     where listaNueva = [popS stack ciudad | stack <- lista] 
--- linkear con holdsS
 
 netV :: Vessel -> Int  -- responde el peso neto en toneladas de los contenedores en el barco
 netV (Ves [] ruta) = 0

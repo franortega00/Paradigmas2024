@@ -2,7 +2,6 @@ module Stack ( Stack, newS, freeCellsS, stackS, netS , holdsS , popS )
  where
 
 import Container
-
 import Route
 
 data Stack = Sta [ Container ] Int deriving (Eq, Show)
@@ -19,10 +18,6 @@ freeCellsS (Sta contsS capacidadStack) = capacidadStack - length contsS
 
 sumarInts :: [Container] -> Int -- función para sumar todos los Ints (pesos) dentro de una colección de tipos Container
 sumarInts = sum . map netC
---otra definicion de sumarInts
-{-sumarInts2 :: [Container] -> Int -- función para sumar todos los Ints dentro de una colección de tipos Container
-lista_nums contenedores = [pesos | Con nombre pesos <- contenedores]
-sumarInts2 = sum lista_nums-}
 
 netS :: Stack -> Int  -- responde el peso neto de los contenedores en la pila
 netS (Sta contsS capacidadStack) = toneladas
