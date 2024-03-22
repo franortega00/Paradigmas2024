@@ -64,6 +64,7 @@ testStack = [
             not(holdsS stack2AB contA rutaABC), --se pasa de peso
             not(holdsS stack2ABC contC rutaABC), --stack ya lleno (se pasa de capacidad) 
             holdsS stack2A contA rutaABC, 
+            not(holdsS stack1 (newC "hola" 1) rutaABC), --no deja cargar un container q no concuerde con la ruta
             netS stack2ABC ==  sum (map netC [contA, contB, contC]), --chequea netS con netC
             popS stack2ABC "Comoros" == stack2AB, --pop correcto
             popS stack2ABC "Brunei" == stack2ABC, --no se puede sacar xq el destino de arriba de todo es "Comoros"
@@ -89,6 +90,7 @@ testVessel = [
         freeCellsV barcoBA == 1,
         freeCellsV barco == 3,
         netV barcoBA == netC contB + netC contA,
+        testF (loadV barco (newC "hola" 1)), --salta error cuando quiero cargar un container que no va con la ruta
         unloadV barcoBA "Armenia" == barcoB,
         unloadV barcoBB "Brunei" == barco, --descarga todos los de ese puerto (recursivo)
         unloadV barcoBB "Armenia" == barcoBB, --no descarga nada en ese puerto

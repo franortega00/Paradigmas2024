@@ -29,6 +29,7 @@ ultimoDestinoPila = last . map destinationC
 holdsS :: Stack -> Container -> Route -> Bool -- indica si la pila puede aceptar el contenedor considerando las ciudades en la ruta
 holdsS (Sta contsS capacidadStack) contenedor ruta  | freeCellsS (Sta contsS capacidadStack) == 0 = False
                                                     | length contsS > 0 && inOrderR ruta ultimo_destino destino_contenedor = False
+                                                    | length contsS == 0 && not(inOrderR ruta destino_contenedor destino_contenedor) = False
                                                     | netS (Sta contsS capacidadStack) + netC contenedor > 20 = False
                                                     | otherwise = True 
     where
