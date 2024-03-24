@@ -1,6 +1,5 @@
 module Vessel (Vessel, newV , freeCellsV , loadV, unloadV, netV )
  where
-
 import Container
 import Stack
 import Route
@@ -12,28 +11,21 @@ barco1 = newV 2 20 ruta
 container1 = newC "MDQ" 5
 
 crearListaDePilas :: Int -> Int -> [Stack]
-crearListaDePilas cantidad altura | cantidad > 1 = lista_stacks --altura == capacidad, cantidad == cantidad bahias
+crearListaDePilas cantidad altura | cantidad > 1 = newS altura : crearListaDePilas (cantidad - 1) altura --constructor de listas / altura == capacidad, cantidad == cantidad bahias
                                   | otherwise = [newS altura]
-    where
-        stack_nuevo = newS altura
-        lista_stacks = stack_nuevo : crearListaDePilas (cantidad - 1) altura --constructor de listas
 
 -- "bahia = pila == stack"
 newV :: Int -> Int -> Route -> Vessel  -- construye un barco según una cantida de bahias, la altura de las mismas y una ruta
 newV cantidad_bahias altura_bahias ruta | (cantidad_bahias > 0) && (altura_bahias > 0) = Ves lista_bahias ruta
-
     where
         lista_bahias = crearListaDePilas cantidad_bahias altura_bahias 
+
 celdasVaciasTotales :: [Stack] -> Int
-celdasVaciasTotales lista | length lista > 1 = lista_recur
+celdasVaciasTotales lista | length lista > 1 = freeCellsS (head lista) + celdasVaciasTotales (tail lista) -- recursividad
                           | otherwise = freeCellsS (last lista)
-    where
-        lista_recur = freeCellsS (head lista) + celdasVaciasTotales (tail lista)
 
 freeCellsV :: Vessel -> Int  -- responde la celdas disponibles en el barco
-freeCellsV (Ves lista ruta) = sumaVaciasTotales
-    where
-        sumaVaciasTotales = celdasVaciasTotales lista
+freeCellsV (Ves lista ruta) = celdasVaciasTotales lista
 
 loadV :: Vessel -> Container -> Vessel -- carga un contenedor en el barco
 loadV (Ves lista ruta) contenedor | length posiblesPilas > 0 = Ves listaNueva ruta
@@ -41,7 +33,6 @@ loadV (Ves lista ruta) contenedor | length posiblesPilas > 0 = Ves listaNueva ru
     where
         posiblesPilas = [pila | pila <- lista , holdsS pila contenedor ruta] -- == True
         pilasNoDisponibles = [pila | pila <- lista , not (holdsS pila contenedor ruta)] -- == False
-
         listaNueva = tail posiblesPilas ++ pilasNoDisponibles ++ [stackS (head posiblesPilas) contenedor]
 
 unloadV :: Vessel -> String -> Vessel  -- responde un barco al que se le han descargado los contenedores que podían descargarse en la ciudad
