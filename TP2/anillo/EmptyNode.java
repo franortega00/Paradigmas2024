@@ -8,6 +8,7 @@ public class EmptyNode extends ContentNode {
     public Object current() {
         throw new RuntimeException();
     }
+    public ContentNode previous(){throw new RuntimeException();}
     public ContentNode add(Object cargo) {
         return new BasicNode( cargo );
     }
