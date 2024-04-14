@@ -7,22 +7,27 @@ public class BasicNode extends ContentNode {
     private ContentNode source;
 
     public BasicNode(Object cargo) {
-        this.element = cargo;
-        this.prev = this;
-        this.next = this;
-        this.source = new EmptyNode();
+        element = cargo;
+        
+        prev = this;
+        next = this;
+        source = new EmptyNode();
     }
     public BasicNode(ContentNode node, Object cargo) {
-        this.prev = node;
-        this.next = node;
-        this.element = cargo;
-        this.source = node;
+        prev = node.previous();
+        next = node;
+        element = cargo;
+
+        source = node;
     }
     public ContentNode next() {
         return next;
     }
     public Object current() { 
         return element; 
+    }
+    public ContentNode previous() {
+        return prev;
     }
     public ContentNode add(Object cargo){
         BasicNode nuevoNode = new BasicNode(this, cargo);
