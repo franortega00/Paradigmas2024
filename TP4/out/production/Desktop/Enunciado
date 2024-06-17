@@ -1,0 +1,30 @@
+Enunciado
+Se nos pide desarrollar la lógica de una partida del juego del Uno.
+(https://ruibalgames.com/wp-content/uploads/2017/06/UNO-reglas.pdf)
+(https://www.minijuegos.com/juego/4-colors-multiplayer-monument-edition)
+Las cartas a considerar en este ejercicio son:
+- All numbered cards.
+- Draw 2 card.
+- Reverse card.
+- Skip card.
+-.Wild card.
+En esta partida vamos a permitir que el jugador elija retirar una carta de la pila incluso si tiene una carta para jugar.
+Quiere decir que cada jugada puede ser retirar una carta de la pila o descartar una carta válida.
+
+La implementación y sus tests deben ser determinísticos.
+La partida debe poder iniciar con 2 o más jugadores hasta que alguno se descarte de todas su cartas siguiendo las reglas del juego.
+Una vez terminado no se puede seguir jugando.
+
+Es requisito cumplir con todos los criterios vistos a lo largo de la cursada.
+
+
+NO HAY NADA RANDOM
+yo reparto mazo: primer carta cabeza (colocr y numero a jugar)
+7 para A, y para B ...
+
+partida jugar(A , rojo 4) -> deja jugar la carta o explota
+
+
+nueva partida
+jugadores > 2 (a,b,c,d) me interesa cantidad
+
