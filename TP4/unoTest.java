@@ -95,7 +95,7 @@ public class unoTest {
         assertThrowsLike( () -> matchEmilioAndJulioWith( new DrawTwoCard("green") ).playCard("Emilio", new DrawTwoCard("green")) , "Invalid card");
     }
 
-    @Test void PlayReverseCardWithThreePlayers() { //TODO REFACTOR
+    @Test void PlayReverseCardWithThreePlayers() { 
         assertCabeza(matchEmilioJulioAndBruno().playCard("Emilio", new ReverseCard("red"))
                 .playCard("Bruno", new NumberCard(7, "red")), new NumberCard( 7, "red"));
     }
